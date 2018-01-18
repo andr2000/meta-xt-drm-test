@@ -1,6 +1,8 @@
 FILESEXTRAPATHS_prepend := "${THISDIR}/files:"
 FILESEXTRAPATHS_prepend := "${THISDIR}/../../inc:"
 
+do_fetch[depends] += "domd-image-weston:do_${BB_DEFAULT_TASK}"
+
 ################################################################################
 # Generic ARMv8
 ################################################################################

@@ -76,9 +76,16 @@ INITSCRIPT_NAME_${PN}-run-set_root_dev = "xt_set_root_dev_cfg.sh"
 INITSCRIPT_PARAMS_${PN}-run-set_root_dev = "defaults 82"
 
 do_install() {
-    install -d ${D}${base_prefix}${XT_DIR_ABS_ROOTFS_DOM_CFG}
-    install -m 0744 ${WORKDIR}/${DOMD_CONFIG} ${D}${base_prefix}${XT_DIR_ABS_ROOTFS_DOM_CFG}/domd.cfg
-    install -m 0744 ${WORKDIR}/${DOMU_CONFIG} ${D}${base_prefix}${XT_DIR_ABS_ROOTFS_DOM_CFG}/domu.cfg
+    if [ -n "${DOMD_CONFIG}" ] ; then
+        install -d ${D}${base_prefix}${XT_DIR_ABS_ROOTFS_DOM_CFG}
+        install -m 0744 ${WORKDIR}/${DOMD_CONFIG} ${D}${base_prefix}${XT_DIR_ABS_ROOTFS_DOM_CFG}/domd.cfg
+    fi
+    if [ -n "${DOMU_CONFIG}" ] ; then
+        install -d ${D}${base_prefix}${XT_DIR_ABS_ROOTFS_DOM_CFG}
+        install -m 0744 ${WORKDIR}/${DOMU_CONFIG} ${D}${base_prefix}${XT_DIR_ABS_ROOTFS_DOM_CFG}/domu.cfg
+        # Fixup a number of PCPUs the VCPUs of DomF must run on
+        sed -i "s/DOMU_ALLOWED_PCPUS/${DOMU_ALLOWED_PCPUS}/g" ${D}${base_prefix}${XT_DIR_ABS_ROOTFS_DOM_CFG}/domu.cfg
+    fi
 
     install -d ${D}${base_prefix}${XT_DIR_ABS_ROOTFS_SCRIPTS}
     install -d ${D}${sysconfdir}/init.d
@@ -87,9 +94,6 @@ do_install() {
     install -m 0744 ${WORKDIR}/start_guest.sh ${D}${base_prefix}${XT_DIR_ABS_ROOTFS_SCRIPTS}/
     install -m 0744 ${WORKDIR}/dom0_vcpu_pin.sh ${D}${sysconfdir}/init.d/
     install -m 0744 ${WORKDIR}/xt_set_root_dev_cfg.sh ${D}${sysconfdir}/init.d/
-
-    # Fixup a number of PCPUs the VCPUs of DomF must run on
-    sed -i "s/DOMU_ALLOWED_PCPUS/${DOMU_ALLOWED_PCPUS}/g" ${D}${base_prefix}${XT_DIR_ABS_ROOTFS_DOM_CFG}/domu.cfg
 
     # Fixup a number of PCPUs the VCPUs of Dom0 must run on
     sed -i "s/DOM0_ALLOWED_PCPUS/${DOM0_ALLOWED_PCPUS}/g" ${D}${sysconfdir}/init.d/dom0_vcpu_pin.sh

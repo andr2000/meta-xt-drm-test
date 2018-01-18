@@ -1,10 +1,8 @@
 DEPENDS += "u-boot-mkimage-native"
 
 IMAGE_INSTALL_append = " \
-    xen-xencommons \
-    xen-xenstat \
-    xen-misc \
-    guest-addons \
+    packagegroup-xt-core-xen \
+    packagegroup-xt-core-guest-addons \
 "
 
 generate_uboot_image() {
