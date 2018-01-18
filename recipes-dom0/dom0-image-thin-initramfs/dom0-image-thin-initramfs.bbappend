@@ -4,7 +4,7 @@ FILESEXTRAPATHS_prepend := "${THISDIR}/../../inc:"
 ################################################################################
 # Generic ARMv8
 ################################################################################
-SRC_URI = "repo://github.com/xen-troops/manifests;protocol=https;branch=master;manifest=prod_ces2018/dom0.xml;scmdata=keep"
+SRC_URI = "repo://github.com/andr2000/manifests;protocol=https;branch=pv_devel;manifest=prod_pv_devel/dom0.xml;scmdata=keep"
 
 ###############################################################################
 # extra layers and files to be put after Yocto's do_unpack into inner builder
