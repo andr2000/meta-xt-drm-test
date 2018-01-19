@@ -3,6 +3,7 @@ DEPENDS += "u-boot-mkimage-native"
 IMAGE_INSTALL_append = " \
     packagegroup-xt-core-xen \
     packagegroup-xt-core-guest-addons \
+    domd-install-artifacts \
 "
 
 generate_uboot_image() {
