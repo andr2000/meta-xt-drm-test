@@ -4,6 +4,7 @@ IMAGE_INSTALL_append = " \
     packagegroup-xt-core-xen \
     packagegroup-xt-core-guest-addons \
     domd-install-artifacts \
+    domu-install-artifacts \
 "
 
 generate_uboot_image() {
