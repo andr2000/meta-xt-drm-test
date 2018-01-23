@@ -1,1 +1,1 @@
-hostname += "-domu"
+hostname .= "-domu"
