@@ -3,6 +3,7 @@ IMAGE_INSTALL_append = " \
     alsa-utils \
     kmscube \
     cldemo \
+    intel-gpu-tools \
 "
 
 # Do not support secure environment
