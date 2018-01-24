@@ -67,8 +67,8 @@ INITSCRIPT_PACKAGES = "${PN}-run-domd ${PN}-run-domu ${PN}-run-vcpu_pin ${PN}-ru
 
 INITSCRIPT_NAME_${PN}-run-domd = "guest_domd"
 INITSCRIPT_PARAMS_${PN}-run-domd = "defaults 85"
-INITSCRIPT_NAME_${PN}-run-domf = "guest_domu"
-INITSCRIPT_PARAMS_${PN}-run-domf = "defaults 86"
+INITSCRIPT_NAME_${PN}-run-domu = "guest_domu"
+INITSCRIPT_PARAMS_${PN}-run-domu = "defaults 86"
 INITSCRIPT_NAME_${PN}-run-vcpu_pin = "dom0_vcpu_pin.sh"
 INITSCRIPT_PARAMS_${PN}-run-vcpu_pin = "defaults 81"
 # must run before any domain creation
