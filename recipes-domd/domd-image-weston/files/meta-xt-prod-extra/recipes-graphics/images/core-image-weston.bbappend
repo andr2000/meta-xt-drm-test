@@ -1,7 +1,9 @@
 IMAGE_INSTALL_append = " \
+    agl-users \
     pulseaudio \
     alsa-utils \
     wayland-ivi-extension \
+    weston-init \
     packagegroup-xt-core-guest-addons \
     packagegroup-xt-core-xen \
     packagegroup-xt-core-pv \
