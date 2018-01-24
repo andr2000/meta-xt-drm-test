@@ -2,9 +2,9 @@ FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
 
 require inc/xt_shared_env.inc
 
-RENESAS_BSP_URL = "git://github.com/xen-troops/linux.git"
+RENESAS_BSP_URL = "git://github.com/andr2000/linux.git"
 
-BRANCH = "ces2018"
+BRANCH = "drm_pre_v0"
 SRCREV = "${AUTOREV}"
 SRC_URI_append = " \
     file://defconfig \
