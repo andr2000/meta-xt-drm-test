@@ -1,0 +1,34 @@
+From 70dab439b3200f68ea28933db431161cbc0b6f22 Mon Sep 17 00:00:00 2001
+From: Oleksandr Andrushchenko <oleksandr_andrushchenko@epam.com>
+Date: Thu, 25 Jan 2018 10:28:40 +0200
+Subject: [PATCH 2/4] dma-buf: Rename dma-ops to prevent conflict with
+ kunmap_atomic macro
+
+See commit f9b67f0014cba18f1aabb6fa9272335a043eb6fd for details.
+
+Signed-off-by: Oleksandr Andrushchenko <oleksandr_andrushchenko@epam.com>
+---
+ services/server/env/linux/physmem_dmabuf.c | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/services/server/env/linux/physmem_dmabuf.c b/services/server/env/linux/physmem_dmabuf.c
+index 32ec46d25a30..e74c22cf64b0 100644
+--- a/services/server/env/linux/physmem_dmabuf.c
++++ b/services/server/env/linux/physmem_dmabuf.c
+@@ -122,8 +122,13 @@ static const struct dma_buf_ops sPVRDmaBufOps =
+ 	.map_dma_buf   = PVRDmaBufOpsMap,
+ 	.unmap_dma_buf = PVRDmaBufOpsUnmap,
+ 	.release       = PVRDmaBufOpsRelease,
++#if (LINUX_VERSION_CODE < KERNEL_VERSION(4, 15, 0))
+ 	.kmap_atomic   = PVRDmaBufOpsKMap,
+ 	.kmap          = PVRDmaBufOpsKMap,
++#else
++	.map_atomic   = PVRDmaBufOpsKMap,
++	.map          = PVRDmaBufOpsKMap,
++#endif
+ 	.mmap          = PVRDmaBufOpsMMap,
+ };
+ 
+-- 
+2.7.4
+

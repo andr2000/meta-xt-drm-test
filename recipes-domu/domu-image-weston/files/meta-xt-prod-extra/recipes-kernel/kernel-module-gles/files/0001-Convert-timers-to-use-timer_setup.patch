@@ -1,0 +1,52 @@
+From 67087381ceae757654682a421930e3d6fb4d3a96 Mon Sep 17 00:00:00 2001
+From: Oleksandr Andrushchenko <oleksandr_andrushchenko@epam.com>
+Date: Thu, 25 Jan 2018 10:23:41 +0200
+Subject: [PATCH 1/4] Convert timers to use timer_setup()
+
+https://lwn.net/Articles/735887/
+
+Signed-off-by: Oleksandr Andrushchenko <oleksandr_andrushchenko@epam.com>
+---
+ services/server/env/linux/osfunc.c | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
+
+diff --git a/services/server/env/linux/osfunc.c b/services/server/env/linux/osfunc.c
+index 527d5f9b44ca..286aa37cb4ba 100644
+--- a/services/server/env/linux/osfunc.c
++++ b/services/server/env/linux/osfunc.c
+@@ -1149,9 +1149,15 @@ static void OSTimerCallbackBody(TIMER_CALLBACK_DATA *psTimerCBData)
+ @Description    OS specific timer callback wrapper function
+ @Input          uData    Timer callback data
+ */ /**************************************************************************/
++#if (LINUX_VERSION_CODE < KERNEL_VERSION(4, 15, 0))
+ static void OSTimerCallbackWrapper(uintptr_t uData)
+ {
+ 	TIMER_CALLBACK_DATA	*psTimerCBData = (TIMER_CALLBACK_DATA*)uData;
++#else
++static void OSTimerCallbackWrapper(struct timer_list *t)
++{
++	TIMER_CALLBACK_DATA	*psTimerCBData = from_timer(psTimerCBData, t, sTimer);
++#endif
+ 
+ #if defined(PVR_LINUX_TIMERS_USING_WORKQUEUES) || defined(PVR_LINUX_TIMERS_USING_SHARED_WORKQUEUE)
+ 	int res;
+@@ -1234,12 +1240,16 @@ IMG_HANDLE OSAddTimer(PFN_TIMER_FUNC pfnTimerFunc, void *pvData, IMG_UINT32 ui32
+ 								?	1
+ 								:	((HZ * ui32MsTimeout) / 1000);
+ 	/* initialise object */
++#if (LINUX_VERSION_CODE < KERNEL_VERSION(4, 15, 0))
+ 	init_timer(&psTimerCBData->sTimer);
+ 
+ 	/* setup timer object */
+ 	psTimerCBData->sTimer.function = (void *)OSTimerCallbackWrapper;
+ 	psTimerCBData->sTimer.data = (uintptr_t)psTimerCBData;
+ 
++#else
++	timer_setup(&psTimerCBData->sTimer, OSTimerCallbackWrapper, 0);
++#endif
+ 	return (IMG_HANDLE)(uintptr_t)(ui32i + 1);
+ }
+ 
+-- 
+2.7.4
+

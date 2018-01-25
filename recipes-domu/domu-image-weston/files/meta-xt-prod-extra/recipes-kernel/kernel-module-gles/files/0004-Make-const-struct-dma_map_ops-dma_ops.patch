@@ -1,0 +1,44 @@
+From 651f5044bd4bbacb77428524d9ddaeb8b4aa9e73 Mon Sep 17 00:00:00 2001
+From: Oleksandr Andrushchenko <oleksandr_andrushchenko@epam.com>
+Date: Thu, 25 Jan 2018 11:53:50 +0200
+Subject: [PATCH 4/4] Make const struct dma_map_ops *dma_ops
+
+Signed-off-by: Oleksandr Andrushchenko <oleksandr_andrushchenko@epam.com>
+---
+ services/server/env/linux/osfunc_arm64.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/services/server/env/linux/osfunc_arm64.c b/services/server/env/linux/osfunc_arm64.c
+index 97f5f3646c4e..726296afd2c4 100644
+--- a/services/server/env/linux/osfunc_arm64.c
++++ b/services/server/env/linux/osfunc_arm64.c
+@@ -226,7 +226,7 @@ void OSCPUCacheFlushRangeKM(PVRSRV_DEVICE_NODE *psDevNode,
+ {
+ #if (LINUX_VERSION_CODE >= KERNEL_VERSION(4, 8, 0))
+ 	struct device *dev = psDevNode->psDevConfig->pvOSDevice;
+-	struct dma_map_ops *dma_ops = get_dma_ops(dev);
++	const struct dma_map_ops *dma_ops = get_dma_ops(dev);
+ #else
+ 	const struct dma_map_ops *dma_ops;
+ #endif
+@@ -255,7 +255,7 @@ void OSCPUCacheCleanRangeKM(PVRSRV_DEVICE_NODE *psDevNode,
+ {
+ #if (LINUX_VERSION_CODE >= KERNEL_VERSION(4, 8, 0))
+ 	struct device *dev = psDevNode->psDevConfig->pvOSDevice;
+-	struct dma_map_ops *dma_ops = get_dma_ops(dev);
++	const struct dma_map_ops *dma_ops = get_dma_ops(dev);
+ #else
+ 	const struct dma_map_ops *dma_ops;
+ #endif
+@@ -282,7 +282,7 @@ void OSCPUCacheInvalidateRangeKM(PVRSRV_DEVICE_NODE *psDevNode,
+ {
+ #if (LINUX_VERSION_CODE >= KERNEL_VERSION(4, 8, 0))
+ 	struct device *dev = psDevNode->psDevConfig->pvOSDevice;
+-	struct dma_map_ops *dma_ops = get_dma_ops(dev);
++	const struct dma_map_ops *dma_ops = get_dma_ops(dev);
+ #else
+ 	const struct dma_map_ops *dma_ops;
+ #endif
+-- 
+2.7.4
+
