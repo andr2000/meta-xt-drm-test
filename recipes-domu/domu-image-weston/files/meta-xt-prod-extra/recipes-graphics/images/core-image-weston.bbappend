@@ -5,7 +5,6 @@ IMAGE_INSTALL_append = " \
     cldemo \
     intel-gpu-tools \
     kmsxx \
-    git \
 "
 
 # Do not support secure environment
