@@ -3,18 +3,16 @@ LIC_FILES_CHKSUM = "file://LICENSE;md5=815ca599c9df247a0c7f619bab123dad"
 
 SRCREV = "${AUTOREV}"
 BRANCH = "master"
-SRC_URI = "git://github.com/tomba/kmsxx.git;protocol=https;branch=${BRANCH}"
-
-# Modify these as desired
-PV = "1.0+git${SRCPV}"
-SRCREV = "${AUTOREV}"
+SRC_URI = "gitsm://github.com/tomba/kmsxx.git;protocol=https;branch=${BRANCH}"
 
 S = "${WORKDIR}/git"
 
-DEPENDS = "libdrm pybind11 python3"
+DEPENDS = "libdrm python3"
 RDEPENDS_${PN} += "python3 python3-enum python3-selectors python3-ctypes python3-fcntl"
 
-inherit cmake pkgconfig
+inherit cmake pkgconfig setuptools3
+
+RDEPENDS_${PN} += "python-argparse python-core"
 
 EXTRA_OECMAKE = ""
 
