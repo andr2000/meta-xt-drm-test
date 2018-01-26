@@ -3,7 +3,7 @@ LIC_FILES_CHKSUM = "file://LICENSE;md5=815ca599c9df247a0c7f619bab123dad"
 
 SRCREV = "${AUTOREV}"
 BRANCH = "master"
-SRC_URI = "gitsm://github.com/tomba/kmsxx.git;protocol=https;branch=${BRANCH}"
+SRC_URI = "gitsm://github.com/andr2000/kmsxx.git;protocol=https;branch=${BRANCH}"
 
 S = "${WORKDIR}/git"
 
