@@ -4,7 +4,7 @@ require inc/xt_shared_env.inc
 
 RENESAS_BSP_URL = "git://github.com/andr2000/linux.git"
 
-BRANCH = "drm_pre_v0"
+BRANCH = "drm_pre_v0_drm_next"
 SRCREV = "${AUTOREV}"
 SRC_URI_append = " \
     file://defconfig \
