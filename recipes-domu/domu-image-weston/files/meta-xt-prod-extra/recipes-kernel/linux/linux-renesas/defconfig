@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/arm64 4.15.0-rc9 Kernel Configuration
+# Linux/arm64 4.15.0-rc8 Kernel Configuration
 #
 CONFIG_ARM64=y
 CONFIG_64BIT=y
@@ -3516,12 +3516,11 @@ CONFIG_VGA_ARB=y
 CONFIG_VGA_ARB_MAX_GPUS=16
 CONFIG_TEGRA_HOST1X=m
 CONFIG_TEGRA_HOST1X_FIREWALL=y
-CONFIG_DRM=y
+CONFIG_DRM=m
 CONFIG_DRM_MIPI_DSI=y
 # CONFIG_DRM_DP_AUX_CHARDEV is not set
-# CONFIG_DRM_DEBUG_MM is not set
 # CONFIG_DRM_DEBUG_MM_SELFTEST is not set
-CONFIG_DRM_KMS_HELPER=y
+CONFIG_DRM_KMS_HELPER=m
 CONFIG_DRM_KMS_FB_HELPER=y
 CONFIG_DRM_FBDEV_EMULATION=y
 CONFIG_DRM_FBDEV_OVERALLOC=100
@@ -3562,14 +3561,14 @@ CONFIG_DRM_NOUVEAU_BACKLIGHT=y
 # CONFIG_DRM_AST is not set
 # CONFIG_DRM_MGAG200 is not set
 # CONFIG_DRM_CIRRUS_QEMU is not set
-CONFIG_DRM_RCAR_DU=y
+CONFIG_DRM_RCAR_DU=m
 # CONFIG_DRM_RCAR_DW_HDMI is not set
 CONFIG_DRM_RCAR_LVDS=y
 CONFIG_DRM_RCAR_VSP=y
 # CONFIG_DRM_QXL is not set
 # CONFIG_DRM_BOCHS is not set
 # CONFIG_DRM_VIRTIO_GPU is not set
-CONFIG_DRM_MSM=y
+CONFIG_DRM_MSM=m
 # CONFIG_DRM_MSM_REGISTER_LOGGING is not set
 CONFIG_DRM_MSM_HDMI_HDCP=y
 CONFIG_DRM_MSM_DSI=y
@@ -3580,6 +3579,7 @@ CONFIG_DRM_MSM_DSI_28NM_8960_PHY=y
 CONFIG_DRM_MSM_DSI_14NM_PHY=y
 CONFIG_DRM_TEGRA=m
 # CONFIG_DRM_TEGRA_DEBUG is not set
+# CONFIG_DRM_TEGRA_STAGING is not set
 CONFIG_DRM_PANEL=y
 
 #
@@ -3633,11 +3633,11 @@ CONFIG_HISI_KIRIN_DW_DSI=m
 # CONFIG_DRM_TINYDRM is not set
 # CONFIG_DRM_PL111 is not set
 CONFIG_DRM_XEN=y
-CONFIG_DRM_XEN_FRONTEND=y
-# CONFIG_DRM_XEN_FRONTEND_CMA is not set
-# CONFIG_DRM_XEN_ZCOPY is not set
+CONFIG_DRM_XEN_FRONTEND=m
+CONFIG_DRM_XEN_ZCOPY=m
+# CONFIG_DRM_XEN_ZCOPY_WA_SWIOTLB is not set
 # CONFIG_DRM_LEGACY is not set
-CONFIG_DRM_PANEL_ORIENTATION_QUIRKS=y
+CONFIG_DRM_PANEL_ORIENTATION_QUIRKS=m
 # CONFIG_DRM_LIB_RANDOM is not set
 
 #
@@ -3925,7 +3925,6 @@ CONFIG_SND_SOC_RCAR=y
 # CONFIG_SND_SUN4I_I2S is not set
 # CONFIG_SND_SUN4I_SPDIF is not set
 # CONFIG_SND_SOC_TEGRA is not set
-# CONFIG_SND_SOC_UNIPHIER is not set
 # CONFIG_SND_SOC_XTFPGA_I2S is not set
 # CONFIG_ZX_SPDIF is not set
 # CONFIG_ZX_I2S is not set
@@ -3965,7 +3964,7 @@ CONFIG_SND_SOC_AK4613=y
 # CONFIG_SND_SOC_CS4349 is not set
 # CONFIG_SND_SOC_CS53L30 is not set
 # CONFIG_SND_SOC_DIO2125 is not set
-CONFIG_SND_SOC_HDMI_CODEC=y
+CONFIG_SND_SOC_HDMI_CODEC=m
 # CONFIG_SND_SOC_ES7134 is not set
 # CONFIG_SND_SOC_ES8316 is not set
 # CONFIG_SND_SOC_ES8328_I2C is not set
@@ -3974,15 +3973,12 @@ CONFIG_SND_SOC_HDMI_CODEC=y
 # CONFIG_SND_SOC_INNO_RK3036 is not set
 # CONFIG_SND_SOC_MAX98504 is not set
 # CONFIG_SND_SOC_MAX98927 is not set
-# CONFIG_SND_SOC_MAX98373 is not set
 # CONFIG_SND_SOC_MAX9860 is not set
 # CONFIG_SND_SOC_MSM8916_WCD_ANALOG is not set
 # CONFIG_SND_SOC_MSM8916_WCD_DIGITAL is not set
 # CONFIG_SND_SOC_PCM1681 is not set
 # CONFIG_SND_SOC_PCM179X_I2C is not set
 # CONFIG_SND_SOC_PCM179X_SPI is not set
-# CONFIG_SND_SOC_PCM186X_I2C is not set
-# CONFIG_SND_SOC_PCM186X_SPI is not set
 # CONFIG_SND_SOC_PCM3168A_I2C is not set
 # CONFIG_SND_SOC_PCM3168A_SPI is not set
 # CONFIG_SND_SOC_PCM512x_I2C is not set
@@ -4004,16 +4000,12 @@ CONFIG_SND_SOC_HDMI_CODEC=y
 # CONFIG_SND_SOC_TAS5086 is not set
 # CONFIG_SND_SOC_TAS571X is not set
 # CONFIG_SND_SOC_TAS5720 is not set
-# CONFIG_SND_SOC_TAS6424 is not set
 # CONFIG_SND_SOC_TFA9879 is not set
 # CONFIG_SND_SOC_TLV320AIC23_I2C is not set
 # CONFIG_SND_SOC_TLV320AIC23_SPI is not set
 # CONFIG_SND_SOC_TLV320AIC31XX is not set
-# CONFIG_SND_SOC_TLV320AIC32X4_I2C is not set
-# CONFIG_SND_SOC_TLV320AIC32X4_SPI is not set
 # CONFIG_SND_SOC_TLV320AIC3X is not set
 # CONFIG_SND_SOC_TS3A227E is not set
-# CONFIG_SND_SOC_TSCS42XX is not set
 # CONFIG_SND_SOC_WM8510 is not set
 # CONFIG_SND_SOC_WM8523 is not set
 # CONFIG_SND_SOC_WM8524 is not set
@@ -4697,7 +4689,132 @@ CONFIG_SWIOTLB_XEN=y
 CONFIG_XEN_PRIVCMD=y
 CONFIG_XEN_EFI=y
 CONFIG_XEN_AUTO_XLATE=y
-# CONFIG_STAGING is not set
+CONFIG_STAGING=y
+# CONFIG_IRDA is not set
+# CONFIG_PRISM2_USB is not set
+# CONFIG_COMEDI is not set
+# CONFIG_RTL8192U is not set
+# CONFIG_RTLLIB is not set
+# CONFIG_RTL8723BS is not set
+# CONFIG_R8712U is not set
+# CONFIG_R8188EU is not set
+# CONFIG_R8822BE is not set
+# CONFIG_RTS5208 is not set
+# CONFIG_VT6655 is not set
+# CONFIG_VT6656 is not set
+
+#
+# IIO staging drivers
+#
+
+#
+# Accelerometers
+#
+# CONFIG_ADIS16201 is not set
+# CONFIG_ADIS16203 is not set
+# CONFIG_ADIS16209 is not set
+# CONFIG_ADIS16240 is not set
+
+#
+# Analog to digital converters
+#
+# CONFIG_AD7606 is not set
+# CONFIG_AD7780 is not set
+# CONFIG_AD7816 is not set
+# CONFIG_AD7192 is not set
+# CONFIG_AD7280 is not set
+
+#
+# Analog digital bi-direction converters
+#
+# CONFIG_ADT7316 is not set
+
+#
+# Capacitance to digital converters
+#
+# CONFIG_AD7150 is not set
+# CONFIG_AD7152 is not set
+# CONFIG_AD7746 is not set
+
+#
+# Direct Digital Synthesis
+#
+# CONFIG_AD9832 is not set
+# CONFIG_AD9834 is not set
+
+#
+# Digital gyroscope sensors
+#
+# CONFIG_ADIS16060 is not set
+
+#
+# Network Analyzer, Impedance Converters
+#
+# CONFIG_AD5933 is not set
+
+#
+# Light sensors
+#
+# CONFIG_TSL2x7x is not set
+
+#
+# Active energy metering IC
+#
+# CONFIG_ADE7753 is not set
+# CONFIG_ADE7754 is not set
+# CONFIG_ADE7758 is not set
+# CONFIG_ADE7759 is not set
+# CONFIG_ADE7854 is not set
+
+#
+# Resolver to digital converters
+#
+# CONFIG_AD2S90 is not set
+# CONFIG_AD2S1200 is not set
+# CONFIG_AD2S1210 is not set
+
+#
+# Triggers - standalone
+#
+# CONFIG_FB_SM750 is not set
+# CONFIG_FB_XGI is not set
+# CONFIG_USB_EMXX is not set
+
+#
+# Speakup console speech
+#
+# CONFIG_SPEAKUP is not set
+# CONFIG_MFD_NVEC is not set
+# CONFIG_STAGING_MEDIA is not set
+
+#
+# Android
+#
+# CONFIG_ASHMEM is not set
+CONFIG_ION=y
+CONFIG_ION_SYSTEM_HEAP=y
+# CONFIG_ION_CARVEOUT_HEAP is not set
+# CONFIG_ION_CHUNK_HEAP is not set
+# CONFIG_ION_CMA_HEAP is not set
+# CONFIG_STAGING_BOARD is not set
+# CONFIG_LTE_GDM724X is not set
+# CONFIG_LNET is not set
+# CONFIG_DGNC is not set
+# CONFIG_GS_FPGABOOT is not set
+# CONFIG_COMMON_CLK_XLNX_CLKWZRD is not set
+# CONFIG_FB_TFT is not set
+# CONFIG_FSL_MC_BUS is not set
+# CONFIG_WILC1000_SDIO is not set
+# CONFIG_WILC1000_SPI is not set
+# CONFIG_MOST is not set
+# CONFIG_KS7010 is not set
+# CONFIG_GREYBUS is not set
+# CONFIG_CRYPTO_DEV_CCREE is not set
+
+#
+# USB Power Delivery and Type-C drivers
+#
+# CONFIG_PI433 is not set
 # CONFIG_GOLDFISH is not set
 CONFIG_CHROME_PLATFORMS=y
 # CONFIG_CROS_EC_CHARDEV is not set
@@ -4911,7 +5028,7 @@ CONFIG_MTK_SCPSYS=y
 # Qualcomm SoC drivers
 #
 # CONFIG_QCOM_GSBI is not set
-CONFIG_QCOM_MDT_LOADER=y
+CONFIG_QCOM_MDT_LOADER=m
 # CONFIG_QCOM_RMTFS_MEM is not set
 CONFIG_QCOM_SMEM=y
 CONFIG_QCOM_SMD_RPM=y
@@ -5026,7 +5143,6 @@ CONFIG_MESON_SARADC=y
 # CONFIG_QCOM_SPMI_IADC is not set
 # CONFIG_QCOM_SPMI_VADC is not set
 # CONFIG_ROCKCHIP_SARADC is not set
-# CONFIG_SD_ADC_MODULATOR is not set
 # CONFIG_TI_ADC081C is not set
 # CONFIG_TI_ADC0832 is not set
 # CONFIG_TI_ADC084S021 is not set
@@ -5407,7 +5523,8 @@ CONFIG_RAS=y
 #
 # Android
 #
-# CONFIG_ANDROID is not set
+CONFIG_ANDROID=y
+# CONFIG_ANDROID_BINDER_IPC is not set
 # CONFIG_LIBNVDIMM is not set
 # CONFIG_DAX is not set
 CONFIG_NVMEM=y
