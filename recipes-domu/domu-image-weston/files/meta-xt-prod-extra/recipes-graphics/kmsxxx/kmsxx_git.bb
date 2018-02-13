@@ -8,7 +8,10 @@ SRC_URI = "gitsm://github.com/andr2000/kmsxx.git;protocol=https;branch=${BRANCH}
 S = "${WORKDIR}/git"
 
 DEPENDS = "libdrm python3"
-RDEPENDS_${PN} += "python3 python3-enum python3-selectors python3-ctypes python3-fcntl python3-argparse python3-core python3-textutils"
+RDEPENDS_${PN} += "python3 python3-enum python3-selectors python3-ctypes\
+     python3-fcntl python3-argparse python3-core python3-textutils\
+     python3-crypt\
+"
 
 inherit cmake pkgconfig
 
