@@ -3,6 +3,7 @@ LICENSE = "CLOSED"
 require inc/xt_shared_env.inc
 
 FILES_${PN} += "${base_prefix}${XT_DIR_ABS_ROOTFS_DOMU}"
+FILES_${PN} += "${base_prefix}${XT_DIR_ABS_ROOTFS_DOMA}"
 
 # FIXME: if not forced and sstate cache is used then an old version of
 # this package (read old DomU kernel images) can be used from cache
@@ -14,5 +15,10 @@ do_install() {
    install -d "${D}/${base_prefix}${XT_DIR_ABS_ROOTFS_DOMU}"
    find "${XT_DIR_ABS_SHARED_BOOT_DOMU}" -iname 'Image*' -exec \
      cp -f --no-dereference --preserve=links {} "${D}/${base_prefix}${XT_DIR_ABS_ROOTFS_DOMU}" \;
+
+   # copy the kernel to DomA - make the build not fail
+   install -d "${D}/${base_prefix}${XT_DIR_ABS_ROOTFS_DOMA}"
+   find "${XT_DIR_ABS_SHARED_BOOT_DOMU}" -iname 'Image*' -exec \
+     cp -f --no-dereference --preserve=links {} "${D}/${base_prefix}${XT_DIR_ABS_ROOTFS_DOMA}" \;
 }
 

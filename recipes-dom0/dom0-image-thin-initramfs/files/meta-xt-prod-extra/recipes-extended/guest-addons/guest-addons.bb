@@ -12,6 +12,8 @@ SRC_URI = "\
     file://domd-salvator-x-h3.cfg \
     file://domu-salvator-x-m3.cfg \
     file://domu-salvator-x-h3.cfg \
+    file://doma-salvator-x-m3.cfg \
+    file://doma-salvator-x-h3.cfg \
     file://guest_domd \
     file://guest_domu \
     file://start_guest.sh \
@@ -23,6 +25,8 @@ S = "${WORKDIR}"
 
 DOMD_CONFIG_salvator-x-m3-xt = "domd-salvator-x-m3.cfg"
 DOMD_CONFIG_salvator-x-h3-xt = "domd-salvator-x-h3.cfg"
+DOMA_CONFIG_salvator-x-m3-xt = "doma-salvator-x-m3.cfg"
+DOMA_CONFIG_salvator-x-h3-xt = "doma-salvator-x-h3.cfg"
 DOMU_CONFIG_salvator-x-m3-xt = "domu-salvator-x-m3.cfg"
 DOMU_CONFIG_salvator-x-h3-xt = "domu-salvator-x-h3.cfg"
 
@@ -85,6 +89,13 @@ do_install() {
         install -m 0744 ${WORKDIR}/${DOMU_CONFIG} ${D}${base_prefix}${XT_DIR_ABS_ROOTFS_DOM_CFG}/domu.cfg
         # Fixup a number of PCPUs the VCPUs of DomF must run on
         sed -i "s/DOMU_ALLOWED_PCPUS/${DOMU_ALLOWED_PCPUS}/g" ${D}${base_prefix}${XT_DIR_ABS_ROOTFS_DOM_CFG}/domu.cfg
+    fi
+
+    if [ -n "${DOMA_CONFIG}" ] ; then
+        install -d ${D}${base_prefix}${XT_DIR_ABS_ROOTFS_DOM_CFG}
+        install -m 0744 ${WORKDIR}/${DOMA_CONFIG} ${D}${base_prefix}${XT_DIR_ABS_ROOTFS_DOM_CFG}/doma.cfg
+        # Fixup a number of PCPUs the VCPUs of DomF must run on
+        sed -i "s/DOMU_ALLOWED_PCPUS/${DOMU_ALLOWED_PCPUS}/g" ${D}${base_prefix}${XT_DIR_ABS_ROOTFS_DOM_CFG}/doma.cfg
     fi
 
     install -d ${D}${base_prefix}${XT_DIR_ABS_ROOTFS_SCRIPTS}
