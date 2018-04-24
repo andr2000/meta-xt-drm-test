@@ -18,6 +18,7 @@ SRC_URI_rcar = "git://github.com/xen-troops/xen.git;protocol=https;branch=4.9.0-
 # we need to patch it to select GSX IMG as default
 SRC_URI_append = " \
     file://0001-Make-GSX-IMG-coproc-default.patch \
+    file://0001-sndif-Synchronize-with-the-latest-Xen.patch \
 "
 
 FLASK_POLICY_FILE = "xenpolicy-${XEN_REL}-rc"
